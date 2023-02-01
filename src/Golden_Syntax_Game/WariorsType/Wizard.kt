@@ -2,5 +2,10 @@ package Golden_Syntax_Game.WariorsType
 
 import Golden_Syntax_Game.Hero
 
-class Wizard(): Hero() {
+class Wizard(heroName: String,
+             healthPoints: Int?,
+             level: Int?,
+             damagePower: Int?): Hero(heroName, healthPoints, level, damagePower) {
+
+
 }
