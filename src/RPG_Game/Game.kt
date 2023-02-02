@@ -1,6 +1,7 @@
-package Golden_Syntax_Game
+package RPG_Game
 
-import Golden_Syntax_Game.Bad_Guy.BadGuy
+import RPG_Game.Bad_Guy.BadGuy
+import RPG_Game.WariorsType.Hero
 
 class Game(team: List<Hero>, opponent: BadGuy) {
 

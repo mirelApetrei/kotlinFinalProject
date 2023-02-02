@@ -1,6 +1,6 @@
-package Golden_Syntax_Game.Extras
+package RPG_Game.Extras
 
-import Golden_Syntax_Game.Hero
+import RPG_Game.WariorsType.Hero
 
 open class ExtraItem(val name: String) {
     var ownedBy: Hero? = null
