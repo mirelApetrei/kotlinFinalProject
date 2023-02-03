@@ -6,6 +6,7 @@ import RPG_Game.WariorsType.Hero
 class Game(team: List<Hero>, opponent: BadGuy) {
 
 
+    fun gameStart(){}
 
     fun oneRound(team: List<Hero>, opponent: BadGuy){
 
@@ -14,4 +15,6 @@ class Game(team: List<Hero>, opponent: BadGuy) {
     fun checkForWinner(){
 
     }
+
+    fun gameOver(){}
 }
