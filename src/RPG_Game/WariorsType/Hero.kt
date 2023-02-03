@@ -9,13 +9,15 @@ open class Hero(var heroName: String,
                 var level: Int,
                 var damagePower: Int ) {
 
-    var specialFeature: ExtraItem? = null
+    open var specialFeature: ExtraItem? = null
 
 
 
 
     override fun toString(): String {
-        return "The ${this.heroName} has ${this.healthPoints} healt points, is at level ${this.level} and has ${damagePower} damage power."
+        return "The ${this.heroName} HP =  ${this.healthPoints} \n " +
+                "The ${this.heroName} level =  ${this.level} \n" +
+                "The ${this.heroName} Power =  ${damagePower} "
     }
 
     open fun attack(hero: Hero, enemy: Opponent) {

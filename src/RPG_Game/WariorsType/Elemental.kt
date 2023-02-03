@@ -7,8 +7,6 @@ class Elemental(heroName: String = "Elemental",
                 level: Int = 1,
                 damagePower: Int = 50): Hero(heroName, healthPoints, level , damagePower) {
 
-
-
     override fun attack(hero: Hero, enemy: Opponent) {
         super.attack(hero, enemy)
         enemy.damagePower = 0
