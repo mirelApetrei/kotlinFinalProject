@@ -1,7 +1,7 @@
 package RPG_Game
 
 import RPG_Game.Bad_Guy.Opponent
-import RPG_Game.WariorsTypes.*
+import RPG_Game.HeroesTypes.*
 //import Thread
 
 class PlayerTeam() {
@@ -9,14 +9,10 @@ class PlayerTeam() {
     private var heroesList: MutableList<Hero>? = mutableListOf()
     var myTeamHP: Int? = null
      var myTeamPower: Int? = null
-//    init {
-//        this.myTeamHP = calculateTeamHP()
-//        this.myTeamPower = calculateTeamPower()
-//    }
+
 
     private var paladin = Paladin()
-//    private var paladin2 = Paladin()
-//    private var paladin3 = Paladin()
+
     private var knight = Knight()
     private var ranger = Ranger()
     private var elemental = Elemental()
@@ -25,8 +21,6 @@ class PlayerTeam() {
 
     private var myTeam: MutableList<Hero> = mutableListOf()
     init {
-        this.myTeamHP = calculateTeamHP()
-        this.myTeamPower = calculateTeamPower()
         this.heroesList = mutableListOf(paladin, knight, ranger, elemental, healer, wizzard)
     }
 
@@ -34,10 +28,10 @@ class PlayerTeam() {
     private fun choseMember(): Hero? {
 
         this.heroesList?.shuffle()
-        if (heroesList?.isEmpty() == true) {
-            return null
+        return if (heroesList?.isEmpty() == true) {
+            null
         } else {
-            return this.heroesList?.removeFirst()
+            this.heroesList?.removeFirst()
         }
     }
 
@@ -70,6 +64,7 @@ class PlayerTeam() {
     }
 
     override fun toString(): String {
+        println()
         for(member in myTeam){
             println("The ${member.heroName} HP =  ${member.healthPoints}\n" +
                     "The ${member.heroName} level =  ${member.level}\n" +
@@ -84,5 +79,6 @@ class PlayerTeam() {
             member.attack(enemy)
         }
     }
+
 
 }

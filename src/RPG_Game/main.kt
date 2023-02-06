@@ -1,18 +1,10 @@
 package RPG_Game
 
+import RPG_Game.Bad_Guy.Enemy
+
 fun main(args: Array<String>) {
 
-    var myTeam: PlayerTeam = PlayerTeam()
-    myTeam.teamBuilding()
-    println(myTeam.toString())
-    println("-----------------------------")
 
-    var myTeam2: PlayerTeam = PlayerTeam()
-    myTeam2.teamBuilding()
-    println(myTeam2.toString())
-    println("-----------------------------")
-
-    var
 
     var myTeam3: PlayerTeam = PlayerTeam()
     myTeam3.teamBuilding()
@@ -21,7 +13,13 @@ fun main(args: Array<String>) {
     println(myTeam3.calculateTeamHP())
     println("-----------------------------")
    println(myTeam3.calculateTeamPower())
-//    myTeam3.teamAttack()
+
+    println()
+    var dragon = Enemy()
+    dragon.toString()
+    dragon.attack(myTeam3)
+
+    //myTeam3.teamAttack(dragon)
 
 }
 

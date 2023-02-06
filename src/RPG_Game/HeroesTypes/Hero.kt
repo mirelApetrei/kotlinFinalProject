@@ -1,10 +1,9 @@
-package RPG_Game.WariorsTypes
+package RPG_Game.HeroesTypes
 
 import RPG_Game.Bad_Guy.Opponent
 import RPG_Game.Extras.ExtraItem
 import RPG_Game.PlayerTeam
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 open class Hero(
     var heroName: String

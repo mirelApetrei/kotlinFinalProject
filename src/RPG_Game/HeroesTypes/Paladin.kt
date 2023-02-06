@@ -1,4 +1,4 @@
-package RPG_Game.WariorsTypes
+package RPG_Game.HeroesTypes
 
 import kotlin.random.Random
 

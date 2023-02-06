@@ -1,4 +1,4 @@
-package RPG_Game.WariorsTypes
+package RPG_Game.HeroesTypes
 
 import RPG_Game.Bad_Guy.Opponent
 import kotlin.random.Random

@@ -3,7 +3,7 @@ package RPG_Game.Bad_Guy
 import kotlin.random.Random
 
 
-open class BadGuy(enemyName: String = "Dragon"): Opponent(enemyName){
+ class Enemy(enemyName: String = "Dragon"): Opponent(enemyName){
 
     init {
         this.level = Random.nextInt(1, 5)
@@ -30,6 +30,7 @@ open class BadGuy(enemyName: String = "Dragon"): Opponent(enemyName){
             }
         }
     }
+
 
 
 }
