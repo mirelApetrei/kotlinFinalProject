@@ -1,6 +1,6 @@
 package RPG_Game.Extras
 
-import RPG_Game.WariorsType.Hero
+import RPG_Game.WariorsTypes.Hero
 
 open class ExtraItem(val name: String) {
     var ownedBy: Hero? = null

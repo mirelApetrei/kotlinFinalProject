@@ -1,18 +1,20 @@
-package RPG_Game.WariorsType
+package RPG_Game.WariorsTypes
 
 import RPG_Game.Bad_Guy.Opponent
 import RPG_Game.Extras.ExtraItem
 import RPG_Game.PlayerTeam
+import kotlin.random.Random
+import kotlin.random.nextInt
 
-open class Hero(var heroName: String,
-                var healthPoints: Int,
-                var level: Int,
-                var damagePower: Int ) {
+open class Hero(
+    var heroName: String
+
+) {
+    var healthPoints: Int = 50
+    var level: Int = Random.nextInt(1, 5)
+    var damagePower: Int = 100
 
     open var specialFeature: ExtraItem? = null
-
-
-
 
     override fun toString(): String {
         return "The ${this.heroName} HP =  ${this.healthPoints} \n " +
@@ -20,9 +22,9 @@ open class Hero(var heroName: String,
                 "The ${this.heroName} Power =  ${damagePower} "
     }
 
-    open fun attack(hero: Hero, enemy: Opponent) {
+    open fun attack( enemy: Opponent) {
         println("This hero has the following damage power : $damagePower points.")
-        enemy.healthPoints = enemy.healthPoints?.minus(hero.damagePower!!)
+        this.damagePower = this.damagePower - this.damagePower
     }
 
     open fun heal() {
@@ -32,7 +34,7 @@ open class Hero(var heroName: String,
 
     open fun defense(team: PlayerTeam, badGuy: Opponent) {
         println("A defense move has been taken.")
-       // badGuy.damagePower = 0
+        // badGuy.damagePower = 0
     }
 
     open fun boost(team: PlayerTeam, badGuy: Opponent) {
