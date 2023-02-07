@@ -31,14 +31,12 @@ class Knight(heroName: String = "Knight"
     }
 
 
-    override fun attack( enemy: Opponent) {
-        super.attack(enemy)
-        if (this.healthPoints == 150){
-            this.damagePower = 85
-        } else if (this.healthPoints < 100){
-            this.damagePower = 50
-        }
-    }
+
+
+//    override fun heroAttack(attack: Int) {
+//        super.heroAttack()
+//        var attack = this.damagePower
+//    }
 
     override fun defense(team: PlayerTeam, enemy: Opponent) {
         super.defense(team, enemy)

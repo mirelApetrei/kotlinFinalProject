@@ -10,6 +10,7 @@ open class Hero(
 
 ) {
     var healthPoints: Int = 50
+    var currentHealtPoints = healthPoints
     var level: Int = Random.nextInt(1, 5)
     var damagePower: Int = 100
 
@@ -18,13 +19,10 @@ open class Hero(
     override fun toString(): String {
         return "The ${this.heroName} HP =  ${this.healthPoints} \n " +
                 "The ${this.heroName} level =  ${this.level} \n" +
-                "The ${this.heroName} Power =  ${damagePower} "
+                "The ${this.heroName} Power =  $damagePower "
     }
 
-    open fun attack( enemy: Opponent) {
-        println("This hero has the following damage power : $damagePower points.")
-        this.damagePower = this.damagePower - this.damagePower
-    }
+
 
     open fun heal() {
         println("An healling potion has being used, this means that your healtPoints will be restored in 50 points.")
@@ -40,6 +38,26 @@ open class Hero(
 //        for (member in team){
 //            member.
 //        }
+    }
+
+    open fun heroAttack(enemy: Opponent) {
+        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        var damageAmount: Int = this.damagePower
+        if (enemy.currentHealtPoints > 0){
+            enemy.takeDamage(damageAmount)
+        }
+
+
+    }
+    open fun takeDamage(damageAmount: Int){
+        this.currentHealtPoints -= damageAmount
+
+        println("${this.heroName} has suffered $damageAmount damage.")
+        println("Remaining HP: $currentHealtPoints/$healthPoints")
+
+        if (currentHealtPoints <= 0){
+            println("${this.heroName} has suffered a killing blow :(")
+        }
     }
 
 

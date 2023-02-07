@@ -33,8 +33,8 @@ class Healer(
         }
     }
 
-    override fun attack( enemy: Opponent) {
-
+     fun heal(friend: Hero) {
+        friend.healthPoints += 100
     }
 
 

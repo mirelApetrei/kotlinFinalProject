@@ -32,15 +32,27 @@ class Elemental(
             }
 
         }
-    }
 
-    override fun attack( enemy: Opponent) {
-        super.attack( enemy)
-        enemy.damagePower = 0
-    }
 
-//    override fun boost() {
-//        super.boost()
-//
+        fun heroAttack(enemy: Opponent) {
+            println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+            var damageAmount: Int = this.damagePower
+            if (enemy.currentHealtPoints > 0) {
+                enemy.takeDamage(damageAmount)
+            }
+        }
+
+
 //    }
+//    override fun takeDamage(damageAmount: Int){
+//        this.currentHealtPoints -= damageAmount
+//
+//        println("${this.heroName} has suffered $damageAmount damage.")
+//        println("Remaining HP: $currentHealtPoints/$healthPoints")
+//
+//        if (currentHealtPoints <= 0){
+//            println("${this.heroName} has suffered a killing blow :(")
+//        }
+
+    }
 }

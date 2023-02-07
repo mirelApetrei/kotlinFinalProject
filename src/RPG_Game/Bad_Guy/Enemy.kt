@@ -3,14 +3,13 @@ package RPG_Game.Bad_Guy
 import kotlin.random.Random
 
 
- class Enemy(enemyName: String = "Dragon"): Opponent(enemyName){
+class Enemy(enemyName: String = "Dragon") : Opponent(enemyName) {
 
     init {
         this.level = Random.nextInt(1, 5)
-
         when (level) {
             in (1..2) -> {
-                this.damagePower = (150..250).random()
+                this.damagePower = (200..250).random()
                 this.healthPoints = (250..300).random()
             }
 
