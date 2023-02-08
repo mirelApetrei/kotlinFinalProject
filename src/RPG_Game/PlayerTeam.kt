@@ -1,5 +1,6 @@
 package RPG_Game
 
+import RPG_Game.Bad_Guy.Opponent
 import RPG_Game.Extras.*
 import RPG_Game.HeroesTypes.*
 
@@ -9,10 +10,11 @@ import RPG_Game.HeroesTypes.*
 class PlayerTeam() {
 
     private var heroesList: MutableList<Hero>? = mutableListOf()
-    private var teamPotionsList: MutableList<ExtraItem> = mutableListOf()
+    var teamPotionsList: MutableList<ExtraItem> = mutableListOf()
     var myTeamHP: Int
     var currentTeamHP: Int
     var myTeamPower: Int
+    var myTeamSize: Int
 
     private var paladin = Paladin()
     private var knight = Knight()
@@ -33,24 +35,34 @@ class PlayerTeam() {
 
     //    Every time the game will initiate, it  will fill the heroes list and the special feature list with default values.
     init {
+
         this.heroesList = mutableListOf(paladin, knight, ranger, elemental, healer, wizzard)
+        this.specialFeatureList = mutableListOf(heal, resurrect, moreDamage, paralyze)
+        myTeam = teamBuilding()
         myTeamHP = calculateTeamHP()
         myTeamPower = calculateTeamPower()
+         myTeamSize = calculateTeamSize()
         currentTeamHP = myTeamHP
-        this.specialFeatureList = mutableListOf(heal, resurrect, moreDamage, paralyze)
+        //teamPotionsList = chooseExtraItems()
+    }
+    private fun calculateTeamSize(): Int{
+        for(hero in myTeam){
+            myTeamSize++
+        }
+        return myTeamSize
     }
 
-    fun choosePotion(): ExtraItem {
-        specialFeatureList.shuffle()
+    /*private fun choosePotion(): ExtraItem {
+        this.specialFeatureList.shuffle()
         return this.specialFeatureList.removeFirst()
     }
 
     fun chooseExtraItems(): MutableList<ExtraItem> {
         for (i in 1..3) {
-            teamPotionsList.add(this.choosePotion())
+            this.teamPotionsList.add(this.choosePotion())
         }
-        return teamPotionsList
-    }
+        return this.teamPotionsList
+    }*/
 
     private fun choseMember(): Hero? {
 
@@ -62,16 +74,18 @@ class PlayerTeam() {
         }
     }
 
-    fun showExtraItems(specialFeatureList: MutableList<ExtraItem>) {
+   /* fun showExtraItems(specialFeatureList: MutableList<ExtraItem>) {
         for (element in specialFeatureList) {
             println(element.name)
         }
-    }
+    }*/
 
-    fun removeHero(hero: Hero) {
-        if (hero.healthPoints <= 0) {
-            this.myTeam.remove(hero)
-        }
+    fun removeHero() {
+       for (hero in myTeam){
+           if (hero.healthPoints <= 0) {
+               this.myTeam.remove(hero)
+           }
+       }
     }
 
     fun teamBuilding(): MutableList<Hero> {
@@ -116,17 +130,42 @@ class PlayerTeam() {
         return ""
     }
 
+//    fun usePotion(enemy: Opponent){
+//        teamPotionsList.shuffle()
+//        var potionToUse = teamPotionsList.random()
+//        potionToUse.equip()
+//    }
 
-//    fun teamAttack(enemy: Opponent) {
-//        println("This hero, ${this.myTeam} with $myTeamPower points, will now attack....")
-//        var damageAmount: Int = this.myTeamPower
-//
-//        for (member in myTeam){
-//            if (enemy.currentHealtPoints > 0){
-//                member.heroAttack(enemy)
-//                enemy.takeDamage(damageAmount)
-//            }
-//        }
+    fun checkForWinner(enemy: Opponent) {
+        if (myTeam.isEmpty()){
+            println("Your enemy has won, because you don`t have any hero in your team.")
+        } else if (enemy.currentHealtPoints <= 0){
+            println("YOU WOOOONNNN!!!")
+        }
+    }
+    fun teamAttack(enemy: Opponent) {
+
+        val damageAmount: Int = this.myTeamPower
+
+        for (member in myTeam) {
+            if (enemy.currentHealtPoints > 0) {
+                when(member){
+                    Healer() -> myTeam.first().heal()
+                    Knight() ->  if (member.currentHealtPoints >= 50){
+                                        member.defense(enemy)
+                                            println("The ${member.heroName} has decided to prtect the team against enemy`s attack..")
+                                } else {
+                                    member.heroAttack(enemy)
+                                    println("The ${member.heroName} with ${member.damagePower} will now attack....")
+                                }
+                    else -> { member.heroAttack(enemy)
+                                println("The ${member.heroName} with ${member.damagePower} will now attack....")
+                    }
+                }
+                enemy.takeDamage(damageAmount)
+            }
+        }
+    }
 //
 //
 //

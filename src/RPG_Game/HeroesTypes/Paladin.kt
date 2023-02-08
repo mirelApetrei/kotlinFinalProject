@@ -1,5 +1,6 @@
 package RPG_Game.HeroesTypes
 
+import RPG_Game.Bad_Guy.Opponent
 import kotlin.random.Random
 
 class Paladin(heroName: String = "Paladin"
@@ -30,10 +31,12 @@ class Paladin(heroName: String = "Paladin"
 
     }
 
-
-
-//     fun attack(paladin: Paladin, enemy: Opponent) {
-//        enemy.healthPoints = enemy.healthPoints?.minus(paladin.damagePower!!)
-//    }
+    override fun heroAttack(enemy: Opponent) {
+        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        val damageAmount: Int = this.damagePower
+        if (enemy.currentHealtPoints > 0) {
+            enemy.takeDamage(damageAmount)
+        }
+    }
 
 }

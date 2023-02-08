@@ -1,5 +1,6 @@
 package RPG_Game.HeroesTypes
 
+import RPG_Game.Bad_Guy.Opponent
 import kotlin.random.Random
 
 class Ranger(heroName: String = "Ranger"
@@ -30,5 +31,12 @@ class Ranger(heroName: String = "Ranger"
         }
     }
 
+    override fun heroAttack(enemy: Opponent) {
+        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        val damageAmount: Int = this.damagePower
+        if (enemy.currentHealtPoints > 0) {
+            enemy.takeDamage(damageAmount)
+        }
+    }
 
 }

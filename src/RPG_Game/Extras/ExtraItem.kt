@@ -4,19 +4,22 @@ import RPG_Game.HeroesTypes.Hero
 
 open class ExtraItem(val name: String) {
 
-    var equiped: Boolean = false
+     var ownedBy: Hero? = null
+     var equipped: Boolean = false
 
-//    constructor(name: String, hero: Hero): this(name){
-//        ownedBy = hero
-//        equiped = true
-//    }
+
+    constructor(name: String, player: Hero) : this(name) {
+        ownedBy = player
+        equipped = true
+    }
+
 
     open fun equip(){
-        equiped = true
+        equipped = true
     }
 
     open fun unequip(){
-        equiped = false
+        equipped = false
     }
 
 

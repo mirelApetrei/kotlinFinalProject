@@ -33,8 +33,8 @@ class Healer(
         }
     }
 
-     fun heal(friend: Hero) {
-        friend.healthPoints += 100
+      fun heal(friend: Hero) {
+        friend.healthPoints += this.damagePower
     }
 
 

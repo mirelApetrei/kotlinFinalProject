@@ -2,6 +2,8 @@ package RPG_Game.HeroesTypes
 
 import RPG_Game.Bad_Guy.Opponent
 import kotlin.random.Random
+import RPG_Game.Extras.ExtraItem
+import RPG_Game.Extras.Paralyze
 
 class Elemental(
     heroName: String = "Elemental"
@@ -33,26 +35,14 @@ class Elemental(
 
         }
 
+    }
 
-        fun heroAttack(enemy: Opponent) {
-            println("This hero, ${this.heroName} with $damagePower points, will now attack....")
-            var damageAmount: Int = this.damagePower
-            if (enemy.currentHealtPoints > 0) {
-                enemy.takeDamage(damageAmount)
-            }
+
+    override fun heroAttack(enemy: Opponent) {
+        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        val damageAmount: Int = this.damagePower
+        if (enemy.currentHealtPoints > 0) {
+            enemy.takeDamage(damageAmount)
         }
-
-
-//    }
-//    override fun takeDamage(damageAmount: Int){
-//        this.currentHealtPoints -= damageAmount
-//
-//        println("${this.heroName} has suffered $damageAmount damage.")
-//        println("Remaining HP: $currentHealtPoints/$healthPoints")
-//
-//        if (currentHealtPoints <= 0){
-//            println("${this.heroName} has suffered a killing blow :(")
-//        }
-
     }
 }

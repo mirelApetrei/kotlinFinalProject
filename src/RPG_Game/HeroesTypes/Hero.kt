@@ -29,7 +29,7 @@ open class Hero(
 //        this.healthPoints = this.healthPoints?.plus(50)!!
     }
 
-    open fun defense(team: PlayerTeam, badGuy: Opponent) {
+    open fun defense( badGuy: Opponent) {
         println("A defense move has been taken.")
         // badGuy.damagePower = 0
     }
@@ -42,7 +42,7 @@ open class Hero(
 
     open fun heroAttack(enemy: Opponent) {
         println("This hero, ${this.heroName} with $damagePower points, will now attack....")
-        var damageAmount: Int = this.damagePower
+        val damageAmount: Int = this.damagePower
         if (enemy.currentHealtPoints > 0){
             enemy.takeDamage(damageAmount)
         }

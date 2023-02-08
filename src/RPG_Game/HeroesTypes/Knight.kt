@@ -32,16 +32,18 @@ class Knight(heroName: String = "Knight"
 
 
 
+   override fun heroAttack(enemy: Opponent) {
+        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        val damageAmount: Int = this.damagePower
+        if (enemy.currentHealtPoints > 0) {
+            println("The enemy suffered damage of ${this.damagePower}")
+            enemy.takeDamage(damageAmount)
+        }
+    }
 
-//    override fun heroAttack(attack: Int) {
-//        super.heroAttack()
-//        var attack = this.damagePower
-//    }
-
-    override fun defense(team: PlayerTeam, enemy: Opponent) {
-        super.defense(team, enemy)
-        if (this.healthPoints >= 150){
-            enemy.damagePower.minus(50)
+   override fun defense(enemy: Opponent) {
+        if (this.healthPoints >= 500){
+            enemy.damagePower.minus(200)
         }
     }
 

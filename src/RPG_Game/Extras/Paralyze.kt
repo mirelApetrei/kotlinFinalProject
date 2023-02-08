@@ -6,8 +6,7 @@ import RPG_Game.Bad_Guy.Opponent
 class Paralyze(name: String = "Paralyze"): ExtraItem(name) {
 
 
-    fun paralyze(){
-        var enemy: Opponent = Enemy()
+    fun paralyze(enemy: Opponent){
         enemy.damagePower = 0
     }
 
