@@ -21,8 +21,9 @@ open class Opponent(
         println()
     }
 
-    open fun heal() {
-        println("An healing potion has being used, this means that your health Points will be restored in 50 points.")
+    open fun summon() {
+        Thread.sleep(1000)
+        println("The enemy will now get some help...")
         this.healthPoints = this.healthPoints.plus(150)
     }
 
