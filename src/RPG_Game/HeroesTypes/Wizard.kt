@@ -41,6 +41,10 @@ class Wizard(
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
+        this.level++
+        currentHealthPoints = this.healthPoints
+        println("The level from ${this.heroName} will rise with 1")
+        this.toString()
     }
 
 }

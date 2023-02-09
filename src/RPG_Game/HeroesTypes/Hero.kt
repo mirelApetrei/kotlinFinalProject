@@ -21,7 +21,7 @@ open class Hero(
         println( "${this.heroName} \n" +
                 "The ${this.heroName} HP =  ${this.healthPoints} \n " +
                 "The ${this.heroName} level =  ${this.level} \n" +
-                "The ${this.heroName} Power =  $damagePower ")
+                "The ${this.heroName} Power =  ${this.damagePower} ")
         println("*********************************")
         return ""
     }
@@ -44,20 +44,12 @@ open class Hero(
 //        }
     }
 
-    open fun heroAttack(team: Team, opponent: Opponent) {
-//        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
-//        val damageAmount: Int = this.damagePower
-//        if (enemy.currentHealthPoints > 0){
-//            enemy.takeDamage(damageAmount)
-//        }
-
-
-    }
-    open fun takeDamage(damageAmount: Int = this.damagePower){
+    open fun heroAttack(team: Team, opponent: Opponent) { }
+    open fun takeDamage(damageAmount: Int ){
         this.currentHealthPoints -= damageAmount
 
         println("${this.heroName} has suffered $damageAmount damage.")
-        println("Remaining HP: $currentHealthPoints/$healthPoints")
+        println("Remaining HP: ${this.currentHealthPoints}/$healthPoints")
 
         if (currentHealthPoints <= 0){
             println("${this.heroName} has suffered a killing blow :(")

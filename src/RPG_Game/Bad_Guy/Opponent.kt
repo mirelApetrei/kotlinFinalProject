@@ -12,14 +12,11 @@ open class Opponent(
     var level: Int = Random.nextInt(1, 5)
     var damagePower: Int = 0
 
-    var equippedWeapon: ExtraItem? = null
-
 
     open fun attack(team: Team) {
-
         var randomChoises = listOf<Int>(1, 2, 3).random()
         println("The enemy`s attack choise is the following ... ")
-        when(randomChoises){
+        when (randomChoises) {
             1 -> levelUp()
             2 -> enemyHit(team)
             3 -> healing()
@@ -27,13 +24,13 @@ open class Opponent(
     }
 
 
-    open fun healing() {
+    fun healing() {
         Thread.sleep(500)
         println("The enemy HEALTH POINTS will increase with 150 points...")
         this.healthPoints = this.healthPoints.plus(150)
     }
 
-    open fun levelUp() {
+    fun levelUp() {
         Thread.sleep(500)
         println("The $enemyName will level up now..")
         this.level++
@@ -46,7 +43,7 @@ open class Opponent(
         println("------------------------------")
     }
 
-    open fun enemyHit(team: Team) {
+    fun enemyHit(team: Team) {
         Thread.sleep(500)
         println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now HIT....")
         team.currentTeamHP -= this.damagePower
@@ -62,6 +59,7 @@ open class Opponent(
 
         if (currentHealthPoints <= 0) {
             println("${this.enemyName} has suffered a killing blow :(")
+
         }
     }
 
@@ -69,11 +67,11 @@ open class Opponent(
         println("..........................")
         println(
             "${this.enemyName}\n" +
+                    "${this.enemyName} level is $level \n" +
                     "${this.enemyName} HP are ${this.healthPoints}\n" +
                     "${this.enemyName} Damage Power is: ${this.damagePower}"
         )
         println("------------------------------")
         return ""
     }
-
 }

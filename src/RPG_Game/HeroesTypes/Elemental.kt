@@ -45,5 +45,8 @@ class Elemental(
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
+        this.currentHealthPoints += 100
+        println("This hero HP will be increased by 100 points.")
+        println(this.currentHealthPoints)
     }
 }

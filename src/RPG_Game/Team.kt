@@ -34,14 +34,14 @@ class Team() {
     private var knight = Knight()
     private var ranger = Ranger()
     private var elemental = Elemental()
-    private var healer = Healer()
     private var wizzard = Wizard()
 
     var myTeam: MutableList<Hero> = mutableListOf()
+
     //    Every time the game will initiate, it  will fill the heroes list and the special feature list with default values.
     init {
 
-        this.heroesList = mutableListOf(paladin, knight, ranger, elemental, healer, wizzard)
+        this.heroesList = mutableListOf(paladin, knight, ranger, elemental, wizzard)
         println("STARTING THE GAME....")
         println(myLogo)
         println("********************************")
@@ -53,15 +53,15 @@ class Team() {
         println()
         println("__________________________")
         println("Your TEAM MEMBERS are: ")
-       for (hero in myTeam){
-           hero.toString()
-       }
+        for (hero in myTeam) {
+            hero.toString()
+        }
 
     }
 
 
     private fun choseTeamFromInput(): MutableList<Hero> {
-        val listWithHerosTypes: List<String> = listOf("Wizard", "Knight", "Paladin", "Ranger", "Healer")
+        val listWithHerosTypes: List<String> = listOf("Wizard", "Knight", "Paladin", "Ranger", "Elemental")
 
         while (this.myTeam.size < 3) {
             println("Please chose your team from the following categories:")
@@ -90,9 +90,9 @@ class Team() {
                         println("A Ranger was added to your team...")
                     }
 
-                    "healer" -> {
-                        myTeam.add(healer)
-                        println("A Healer was added to your team...")
+                    "elemental" -> {
+                        myTeam.add(elemental)
+                        println("An Elemental was added to your team...")
                     }
 
                     else ->
@@ -102,35 +102,14 @@ class Team() {
                 println("Name or type non-valid...please try again!")
             }
             continue
-
         }
         return myTeam
-
     }
-
-    /*private fun choosePotion(): ExtraItem {
-        this.specialFeatureList.shuffle()
-        return this.specialFeatureList.removeFirst()
-    }
-
-    fun chooseExtraItems(): MutableList<ExtraItem> {
-        for (i in 1..3) {
-            this.teamPotionsList.add(this.choosePotion())
-        }
-        return this.teamPotionsList
-    }*/
-
-    /* fun showExtraItems(specialFeatureList: MutableList<ExtraItem>) {
-         for (element in specialFeatureList) {
-             println(element.name)
-         }
-     }*/
 
     private fun calculateTeamHP(): Int {
         for (entry in this.myTeam) {
             myTeamHP = myTeamHP.plus(entry.healthPoints)
         }
-
         return myTeamHP
     }
 
@@ -138,10 +117,8 @@ class Team() {
         for (entry in this.myTeam) {
             myTeamPower = myTeamPower.plus(entry.damagePower)
         }
-
         return myTeamPower
     }
-
 
     override fun toString(): String {
         println()
@@ -172,54 +149,42 @@ class Team() {
     fun removeHero() {
         for (hero in myTeam) {
             if (hero.currentHealthPoints <= 0) {
-                this.myTeam.remove(hero)
+                myTeam.remove(hero)
                 println(" This hero, ${hero.heroName}, has been removed from your team, because is DEAD.")
             }
         }
     }
-
     fun teamAttack(team: Team, enemy: Opponent) {
-//        val damageAmount: Int = this.myTeamPower
         for (member in myTeam) {
             if (enemy.currentHealthPoints > 0) {
-                when (member) {
-                    Healer() -> member.heal(team)
-                    Knight() -> if (member.currentHealthPoints >= 50) {
-                        member.defense(enemy)
-                        println("The ${member.heroName} has decided to protect the team against enemy`s attack..")
-                    } else {
-                        member.heroAttack(team, enemy)
-
-                    }
-
-                    else -> {
-                        member.heroAttack(team, enemy)
-
-                        println("#####################################")
-                        println()
-                    }
-                }
+                member.heroAttack(team, enemy)
             }
+            checkForWinner(team, enemy)
         }
-        checkForWinner(team, enemy)
     }
 
-    fun teamTakeDamage(damageAmount: Int) {
-//        this.currentTeamHP -= damageAmount
+    fun teamTakeDamage(enemy: Opponent) {
+        this.currentTeamHP -= enemy.damagePower
+        var damageAmount = enemy.damagePower
         for (hero in myTeam) {
-            hero.currentHealthPoints -= damageAmount
-            println("$hero has suffered $damageAmount damage.")
-            println("Remaining HP: ${hero.currentHealthPoints}/${hero.healthPoints}")
-
-            println("################################################")
-            println()
-            removeHero()
+            var heroDamage = damageAmount/myTeam.size
+            hero.takeDamage(heroDamage)
+            hero.currentHealthPoints = hero.currentHealthPoints - heroDamage
+//            println("$hero has suffered $heroDamage damage.")
+//            println("Remaining HP: ${hero.currentHealthPoints}/${hero.healthPoints}")
+//
+//            println("################################################")
+//            println()
         }
         for (player in myTeam) {
+            if (player.currentHealthPoints <= 0){
+                player.currentHealthPoints = 0
+            }
             currentTeamHP += player.currentHealthPoints
         }
-
+        println("The current HP of the team is $currentTeamHP")
     }
-
-
 }
+
+
+

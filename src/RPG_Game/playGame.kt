@@ -60,35 +60,29 @@ fun playGame() {
     println(enemyLogo)
     enemy.toString()
 
+
     while (team.currentTeamHP > 0 && enemy.currentHealthPoints > 0) {
         println("THE FIGHT BEGINS......")
         Thread.sleep(2000)
         oneRoundFight(team, enemy)
 
-        Thread.sleep(500)
+
     }
 }
 
 fun oneRoundFight(team: Team, enemy: Enemy) {
-
     team.teamAttack(team, enemy)
     if (enemy.currentHealthPoints <= 0) {
         println("Your enemy is defeated.")
-
+        return
     } else {
         enemy.attack(team)
-        if (team.currentTeamHP > 0)
-            team.removeHero()
+        team.teamTakeDamage(enemy)
     }
-    println("///////////////////////////////")
+    println("*******************************")
     println("|||||||||||||||||||||||||||||||")
-    println("""\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\""")
-    if (enemy.currentHealthPoints <= 0) {
-        team.checkForWinner(team, enemy)
-    } else {
-        enemy.attack(team)
-        team.removeHero()
-    }
+    println("*******************************")
+    team.checkForWinner(team, enemy)
     Thread.sleep(1000)
 }
 
