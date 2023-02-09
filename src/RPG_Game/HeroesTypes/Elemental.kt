@@ -47,6 +47,6 @@ class Elemental(
         }
         this.currentHealthPoints += 100
         println("This hero HP will be increased by 100 points.")
-        println(this.currentHealthPoints)
+        this.toString()
     }
 }

@@ -169,12 +169,6 @@ class Team() {
         for (hero in myTeam) {
             var heroDamage = damageAmount/myTeam.size
             hero.takeDamage(heroDamage)
-            hero.currentHealthPoints = hero.currentHealthPoints - heroDamage
-//            println("$hero has suffered $heroDamage damage.")
-//            println("Remaining HP: ${hero.currentHealthPoints}/${hero.healthPoints}")
-//
-//            println("################################################")
-//            println()
         }
         for (player in myTeam) {
             if (player.currentHealthPoints <= 0){

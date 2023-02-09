@@ -10,7 +10,7 @@ class Wizard(
     heroName: String = "Wizzard"
 ) : Hero(heroName) {
 
-    override var specialFeature: ExtraItem? = Paralyze("Paralyze")
+
 
     init {
         this.level = Random.nextInt(1,5)
@@ -41,9 +41,14 @@ class Wizard(
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
+        if (this.level < 5){
         this.level++
-        currentHealthPoints = this.healthPoints
-        println("The level from ${this.heroName} will rise with 1")
+            println("The level from ${this.heroName} will rise with 1")
+            currentHealthPoints += 30
+            damagePower += 30
+        } else {
+            currentHealthPoints += 50
+        }
         this.toString()
     }
 
