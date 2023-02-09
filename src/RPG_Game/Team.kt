@@ -34,14 +34,14 @@ class Team() {
     private var knight = Knight()
     private var ranger = Ranger()
     private var elemental = Elemental()
-    private var wizzard = Wizard()
+    private var wizard = Wizard()
 
     var myTeam: MutableList<Hero> = mutableListOf()
 
     //    Every time the game will initiate, it  will fill the heroes list and the special feature list with default values.
     init {
 
-        this.heroesList = mutableListOf(paladin, knight, ranger, elemental, wizzard)
+        this.heroesList = mutableListOf(paladin, knight, ranger, elemental, wizard)
         println("STARTING THE GAME....")
         println(myLogo)
         println("********************************")
@@ -71,7 +71,7 @@ class Team() {
                 Thread.sleep(600)
                 when (chosenTeamMember) {
                     "wizard" -> {
-                        this.myTeam.add(wizzard)
+                        this.myTeam.add(wizard)
                         println("A Wizard was added to your team...")
                     }
 
@@ -136,7 +136,7 @@ class Team() {
     }
 
 
-    fun checkForWinner(team: Team, enemy: Opponent) {
+    private fun checkForWinner(team: Team, enemy: Opponent) {
         if (team.currentTeamHP <= 0) {
             println("Your enemy has won, because you don`t have any more HEALTH POINTS!")
         } else if (enemy.currentHealthPoints <= 0) {
@@ -165,7 +165,7 @@ class Team() {
 
     fun teamTakeDamage(enemy: Opponent) {
         this.currentTeamHP -= enemy.damagePower
-        var damageAmount = enemy.damagePower
+        val damageAmount = enemy.damagePower
         for (hero in myTeam) {
             var heroDamage = damageAmount/myTeam.size
             hero.takeDamage(heroDamage)

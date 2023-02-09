@@ -65,8 +65,6 @@ fun playGame() {
         println("THE FIGHT BEGINS......")
         Thread.sleep(2000)
         oneRoundFight(team, enemy)
-
-
     }
 }
 
@@ -77,12 +75,12 @@ fun oneRoundFight(team: Team, enemy: Enemy) {
         return
     } else {
         enemy.attack(team)
-        team.teamTakeDamage(enemy)
+//        team.teamTakeDamage(enemy)
     }
     println("*******************************")
     println("|||||||||||||||||||||||||||||||")
     println("*******************************")
-    team.checkForWinner(team, enemy)
+
     Thread.sleep(1000)
 }
 

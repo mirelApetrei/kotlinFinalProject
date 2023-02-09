@@ -46,7 +46,9 @@ class Elemental(
             enemy.takeDamage(damageAmount)
         }
         this.currentHealthPoints += 100
+        team.currentTeamHP += 100
         println("This hero HP will be increased by 100 points.")
-        println("The $heroName HP = $currentHealthPoints")
+        println("The $heroName HP = ${this.currentHealthPoints}")
+        println("TEAM HP = ${team.currentTeamHP}")
     }
 }

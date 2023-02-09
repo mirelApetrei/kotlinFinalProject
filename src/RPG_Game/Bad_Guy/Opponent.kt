@@ -40,21 +40,20 @@ open class Opponent(
         Thread.sleep(500)
         println("The $enemyName will level up now..")
         this.level++
-        this.currentHealthPoints += 170
+        currentHealthPoints += 170
         damagePower += 150
         println(
             "${this.enemyName}\n" +
-                    "${this.enemyName} HP are ${healthPoints}\n" +
+                    "${this.enemyName} HP are ${currentHealthPoints}\n" +
                     "${this.enemyName} Damage Power is: $damagePower"
         )
         println("------------------------------")
     }
 
-    fun enemyHit(team: Team) {
+    private fun enemyHit(team: Team) {
         Thread.sleep(500)
         println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now HIT....")
-        team.currentTeamHP -= this.damagePower
-
+        team.teamTakeDamage(this)
 
     }
 
@@ -66,7 +65,6 @@ open class Opponent(
 
         if (currentHealthPoints <= 0) {
             println("${this.enemyName} has suffered a killing blow :(")
-
         }
     }
 

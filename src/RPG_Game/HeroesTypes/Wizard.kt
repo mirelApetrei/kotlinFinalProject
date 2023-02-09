@@ -42,15 +42,15 @@ class Wizard(
             enemy.takeDamage(damageAmount)
         }
         if (this.level < 5){
-        this.level++
-            currentHealthPoints += 30
-            team.currentTeamHP =+ 30
+        level++
+            this.currentHealthPoints += 30
+            team.currentTeamHP += 30
             damagePower += 30
-            println("The $heroName HP = $currentHealthPoints, Power = $currentHealthPoints")
+            println("The $heroName HP = ${this.currentHealthPoints}, Power = ${this.damagePower}")
             println("TEAM HP = ${team.currentTeamHP}")
         } else {
-            currentHealthPoints += 50
-            println("The $heroName HP = $currentHealthPoints")
+            this.currentHealthPoints += 50
+            println("The $heroName HP = ${this.currentHealthPoints}")
         }
     }
 
