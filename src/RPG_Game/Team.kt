@@ -27,7 +27,7 @@ class Team() {
 
     private var heroesList: MutableList<Hero>? = mutableListOf()
     var myTeamHP: Int
-    var currentTeamHP: Int
+    var currentTeamHP: Int = 0
     var myTeamPower: Int
 
     private var paladin = Paladin()
@@ -49,11 +49,12 @@ class Team() {
         myTeam = choseTeamFromInput()
         this.myTeamHP = calculateTeamHP()
         this.myTeamPower = calculateTeamPower()
-        currentTeamHP = myTeamHP
+
         println()
         println("__________________________")
         println("Your TEAM MEMBERS are: ")
         for (hero in myTeam) {
+            hero.currentHealthPoints = hero.healthPoints
             hero.toString()
         }
 
@@ -154,29 +155,35 @@ class Team() {
             }
         }
     }
+
     fun teamAttack(team: Team, enemy: Opponent) {
         for (member in myTeam) {
             if (enemy.currentHealthPoints > 0) {
                 member.heroAttack(team, enemy)
                 Thread.sleep(600)
             }
-            checkForWinner(team, enemy)
         }
+        checkForWinner(team, enemy)
     }
 
     fun teamTakeDamage(enemy: Opponent) {
-        this.currentTeamHP -= enemy.damagePower
-        var damageAmount = enemy.damagePower
-        for (hero in myTeam) {
-            var heroDamage = damageAmount/myTeam.size
 
+        var damageAmount = enemy.damagePower
+
+        for (hero in myTeam) {
+            val heroDamage = damageAmount / myTeam.size
             hero.takeDamage(heroDamage)
         }
+        currentTeamHP -= enemy.damagePower
         for (player in myTeam) {
-            if (player.currentHealthPoints <= 0){
+            if (player.currentHealthPoints <= 0) {
                 player.currentHealthPoints = 0
             }
-            currentTeamHP += player.currentHealthPoints
+            if (enemy.damagePower != 0) {
+                currentTeamHP += player.currentHealthPoints
+            } else {
+                currentTeamHP = this.myTeamHP
+            }
         }
         println("The current HP of the team is $currentTeamHP")
     }

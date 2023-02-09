@@ -16,7 +16,7 @@ open class Hero(var heroName: String) {
         println("-------------------------------")
         println(
             "${this.heroName} \n" +
-                    "The ${this.heroName} HP =  ${this.healthPoints} \n " +
+                    "The ${this.heroName} HP =  ${this.currentHealthPoints} \n " +
                     "The ${this.heroName} level =  ${this.level} \n" +
                     "The ${this.heroName} Power =  ${this.damagePower} "
         )

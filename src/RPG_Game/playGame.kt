@@ -43,7 +43,8 @@ fun playGame() {
     Thread.sleep(500)
     println("***************************************")
     println()
-    println("Your team current Health Points are: ${team.currentTeamHP}")
+    println("Your team current Health Points are: ${team.myTeamHP}")
+    team.currentTeamHP = team.myTeamHP
     println("Your team damage power is ${team.myTeamPower}")
     println()
     println("***************************************")
@@ -70,6 +71,7 @@ fun playGame() {
 
 fun oneRoundFight(team: Team, enemy: Enemy) {
     team.teamAttack(team, enemy)
+    println("Enemy remaining Hp are : ${enemy.currentHealthPoints}")
     if (enemy.currentHealthPoints <= 0) {
         println("Your enemy is defeated.")
         return

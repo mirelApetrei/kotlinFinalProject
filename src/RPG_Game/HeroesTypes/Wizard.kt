@@ -13,21 +13,24 @@ class Wizard(
 
 
     init {
-        this.level = Random.nextInt(1,5)
+        this.level = Random.nextInt(1, 5)
 
         when (level) {
             in (1..2) -> {
                 this.damagePower = (70..110).random()
                 this.healthPoints = (85..115).random()
             }
+
             in (2..3) -> {
                 this.damagePower = (110..140).random()
                 this.healthPoints = (115..145).random()
             }
+
             in (3..4) -> {
                 this.damagePower = (140..160).random()
                 this.healthPoints = (145..180).random()
             }
+
             in (4..5) -> {
                 this.damagePower = (160..190).random()
                 this.healthPoints = (180..210).random()
@@ -36,20 +39,24 @@ class Wizard(
     }
 
     override fun heroAttack(team: Team, enemy: Opponent) {
-        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        println("This hero, ${this.heroName} with $damagePower Power points, will now attack....")
         val damageAmount: Int = this.damagePower
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
-        if (this.level < 5){
-        this.level++
+        if (this.level < 5) {
+            this.level++
             println("The level from ${this.heroName} will rise with 1")
-            currentHealthPoints += 30
-            damagePower += 30
+            this.currentHealthPoints += 30
+            this.damagePower += 30
+            println(
+                "Now the $heroName has $currentHealthPoints HP \n" +
+                        "And $damagePower damage power."
+            )
         } else {
-            currentHealthPoints += 50
+            this.currentHealthPoints += 50
         }
-        this.toString()
+//        this.toString()
     }
 
 }

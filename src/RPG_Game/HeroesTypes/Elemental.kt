@@ -39,13 +39,14 @@ class Elemental(
     }
 
     override fun heroAttack(team: Team, enemy: Opponent) {
-        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        println("This hero, ${this.heroName} with $damagePower Power points, will now attack....")
         val damageAmount: Int = this.damagePower
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
-        currentHealthPoints += 100
+        this.currentHealthPoints += 100
         println("This hero HP will be increased by 100 points.")
-        this.toString()
+        println("The $heroName currentHealthPoints are: $currentHealthPoints")
+//        this.toString()
     }
 }

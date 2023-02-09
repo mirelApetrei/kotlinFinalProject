@@ -33,7 +33,7 @@ class Ranger(heroName: String = "Ranger"
     }
 
     override fun heroAttack(team: Team, enemy: Opponent) {
-        println("This hero, ${this.heroName} with $damagePower points, will now attack....")
+        println("This hero, ${this.heroName} with $damagePower Power points, will now attack....")
         val damageAmount: Int = this.damagePower
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
