@@ -43,13 +43,15 @@ class Wizard(
         }
         if (this.level < 5){
         this.level++
-            println("The level from ${this.heroName} will rise with 1")
             currentHealthPoints += 30
+            team.currentTeamHP =+ 30
             damagePower += 30
+            println("The $heroName HP = $currentHealthPoints, Power = $currentHealthPoints")
+            println("TEAM HP = ${team.currentTeamHP}")
         } else {
             currentHealthPoints += 50
+            println("The $heroName HP = $currentHealthPoints")
         }
-        this.toString()
     }
 
 }
