@@ -51,9 +51,10 @@ class Wizard(
             team.currentTeamHP += 30
             this.damagePower += 30
             println(
-                "Now the $heroName has $currentHealthPoints HP \n" +
-                        "And $damagePower damage power."
+                "Now the $heroName has ${this.currentHealthPoints} HP \n" +
+                        "And ${this.damagePower} damage power."
             )
+            println("TEAM HP = ${team.currentTeamHP}")
         } else {
             this.currentHealthPoints += 50
             team.currentTeamHP += 50

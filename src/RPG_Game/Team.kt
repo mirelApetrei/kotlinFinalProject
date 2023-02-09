@@ -108,7 +108,7 @@ class Team() {
     }
 
     private fun calculateTeamHP(): Int {
-        for (entry in this.myTeam) {
+        for (entry in myTeam) {
             myTeamHP = myTeamHP.plus(entry.healthPoints)
         }
         return myTeamHP

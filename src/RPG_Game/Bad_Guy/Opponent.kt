@@ -50,8 +50,8 @@ open class Opponent(
         this.damagePower += 100
         println(
             "${this.enemyName}\n" +
-                    "${this.enemyName} HP are ${this.healthPoints}\n" +
-                    "${this.enemyName} Damage Power is: ${this.damagePower}"
+                    "${this.enemyName} HP are ${healthPoints}\n" +
+                    "${this.enemyName} Damage Power is: $damagePower"
         )
         println("------------------------------")
     }
