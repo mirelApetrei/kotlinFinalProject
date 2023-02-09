@@ -50,16 +50,17 @@ open class Opponent(
         this.damagePower += 100
         println(
             "${this.enemyName}\n" +
-                    "${this.enemyName} HP are ${healthPoints}\n" +
-                    "${this.enemyName} Damage Power is: $damagePower"
+                    "${this.enemyName} HP are ${this.healthPoints}\n" +
+                    "${this.enemyName} Damage Power is: $this.damagePower"
         )
         println("------------------------------")
     }
 
     private fun enemyHit(team: Team) {
         Thread.sleep(500)
-        println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now HIT....")
-        team.currentTeamHP -= this.damagePower
+        println("The ${this.enemyName} with ${this.damagePower} DAMAGE POWER, will now HIT....")
+//        team.currentTeamHP -= this.damagePower
+        team.teamTakeDamage(this)
 
 
     }

@@ -42,10 +42,11 @@ class Elemental(
         if (opponent.currentHealthPoints > 0) {
             opponent.takeDamage(damageAmount)
         }
-        currentHealthPoints += 100
-        team.currentTeamHP += 100
         println("This hero HP will be increased by 100 points.")
-        println("The $heroName currentHealthPoints are: $currentHealthPoints")
+        currentHealthPoints += 100
+        println("The $heroName HP = ${this.currentHealthPoints}")
+        team.currentTeamHP += 100
+        println("TEAM HP = ${team.currentTeamHP}")
         println(".........-------------.........")
 //        this.toString()
     }

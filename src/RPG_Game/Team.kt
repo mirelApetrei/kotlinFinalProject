@@ -4,7 +4,7 @@ import RPG_Game.Bad_Guy.Opponent
 import RPG_Game.HeroesTypes.*
 
 //*
-// TODO: with the help of this Class, we are building our team randomly, and also our teamPotionsList wich we will use in combat
+// TODO: with the help of this Class, we are building our team and initiate some properties  like HP , level and damagePower...
 // */
 
 

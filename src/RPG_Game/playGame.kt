@@ -62,12 +62,12 @@ fun playGame() {
     enemy.toString()
 
     do {
-       // team.currentTeamHP = team.myTeamHP
+        team.currentTeamHP = team.myTeamHP
         println("THE FIGHT BEGINS......")
         Thread.sleep(2000)
         oneRoundFight(team, enemy)
         println("_____________________________")
-        //println("Your team current Health Points are: ${team.currentTeamHP}")
+        println("Your team current Health Points are: ${team.currentTeamHP}")
         println("_____________________________")
     }
     while (team.currentTeamHP > 0 && enemy.currentHealthPoints > 0)
@@ -77,15 +77,13 @@ fun playGame() {
 
 fun oneRoundFight(team: Team, enemy: Enemy) {
     team.teamAttack(team, enemy)
-    println("Enemy remaining Hp are : ${enemy.currentHealthPoints}")
-    println("###############################")
+    println("Enemy remaining HP are : ${enemy.currentHealthPoints}")
+    println()
     println("###############################")
     Thread.sleep(2000)
     if (enemy.currentHealthPoints <= 0) {
-        //println("Your enemy is defeated.")
         return
     } else {
-
         enemy.attack(team)
         team.teamTakeDamage(enemy)
     }

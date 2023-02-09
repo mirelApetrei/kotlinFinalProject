@@ -10,8 +10,8 @@
     - Encapsulation
     - Polymorphism
     - Abstraction
-- "for" , "while", "when" - loops
-- "if", "else" - conditionals and so more...
+- "for" , "while" - loops
+- "if", "else", "when" - conditionals and so more...
 ### The Game has the following things:
 - A "Hero" super Class wich from inherits all the hero-types(Elemental, Ranger....)
 - A "Opponent" super Class, from wich inherits the "Enemy" class
