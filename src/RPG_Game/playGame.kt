@@ -60,13 +60,11 @@ fun playGame() {
     println(enemyLogo)
     enemy.toString()
 
-
     while (team.currentTeamHP > 0 && enemy.currentHealthPoints > 0) {
         println("THE FIGHT BEGINS......")
         Thread.sleep(2000)
         oneRoundFight(team, enemy)
-
-
+        println("_____________________________")
     }
 }
 

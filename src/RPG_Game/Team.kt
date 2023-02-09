@@ -158,6 +158,7 @@ class Team() {
         for (member in myTeam) {
             if (enemy.currentHealthPoints > 0) {
                 member.heroAttack(team, enemy)
+                Thread.sleep(600)
             }
             checkForWinner(team, enemy)
         }
@@ -168,6 +169,7 @@ class Team() {
         var damageAmount = enemy.damagePower
         for (hero in myTeam) {
             var heroDamage = damageAmount/myTeam.size
+
             hero.takeDamage(heroDamage)
         }
         for (player in myTeam) {

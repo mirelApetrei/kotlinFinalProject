@@ -14,12 +14,23 @@ open class Opponent(
 
 
     open fun attack(team: Team) {
-        var randomChoises = listOf<Int>(1, 2, 3).random()
-        println("The enemy`s attack choise is the following ... ")
-        when (randomChoises) {
-            1 -> levelUp()
-            2 -> enemyHit(team)
-            3 -> healing()
+        var randomChoices = listOf<Int>(1, 2, 3).random()
+        println("The enemy`s attack choice is the following ... ")
+        when (randomChoices) {
+            1 -> {
+                levelUp()
+                damagePower = 0
+                return
+            }
+            2 -> {
+                enemyHit(team)
+                return
+            }
+            else -> {
+                healing()
+                damagePower = 0
+                return
+            }
         }
     }
 
@@ -34,8 +45,8 @@ open class Opponent(
         Thread.sleep(500)
         println("The $enemyName will level up now..")
         this.level++
-        this.currentHealthPoints = healthPoints
-        damagePower = this.damagePower
+        this.healthPoints += 150
+        this.damagePower += 100
         println(
             "${this.enemyName}\n" +
                     "${this.enemyName} HP are ${this.healthPoints}\n" +
