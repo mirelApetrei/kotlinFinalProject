@@ -25,7 +25,7 @@ open class Hero(
 
 
     open fun heal() {
-        println("An healling potion has being used, this means that your healtPoints will be restored in 50 points.")
+        println("An healing action has benn taken..")
 //        this.healthPoints = this.healthPoints?.plus(50)!!
     }
 
@@ -42,14 +42,14 @@ open class Hero(
 
     open fun heroAttack(enemy: Opponent) {
         println("This hero, ${this.heroName} with $damagePower points, will now attack....")
-        val damageAmount: Int = this.damagePower
-        if (enemy.currentHealtPoints > 0){
-            enemy.takeDamage(damageAmount)
-        }
+//        val damageAmount: Int = this.damagePower
+//        if (enemy.currentHealtPoints > 0){
+//            enemy.takeDamage(damageAmount)
+//        }
 
 
     }
-    open fun takeDamage(damageAmount: Int){
+    open fun takeDamage(damageAmount: Int = this.damagePower){
         this.currentHealtPoints -= damageAmount
 
         println("${this.heroName} has suffered $damageAmount damage.")

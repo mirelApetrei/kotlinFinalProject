@@ -1,5 +1,6 @@
 package RPG_Game.Bad_Guy
 
+import RPG_Game.PlayerTeam
 import kotlin.random.Random
 
 
@@ -36,6 +37,9 @@ class Enemy(enemyName: String = "Dragon"): Opponent(enemyName) {
 
     }
 
-
+    override fun enemyAttack(team: PlayerTeam){
+        team.currentTeamHP -= this.damagePower
+        team.teamTakeDamage(this.damagePower)
+    }
 
 }

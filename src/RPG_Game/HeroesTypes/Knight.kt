@@ -42,7 +42,7 @@ class Knight(heroName: String = "Knight"
     }
 
    override fun defense(enemy: Opponent) {
-        if (this.healthPoints >= 500){
+        if (this.healthPoints >= 50){
             enemy.damagePower.minus(200)
         }
     }

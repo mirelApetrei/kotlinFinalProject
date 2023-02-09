@@ -59,21 +59,13 @@ fun start() {
     Thread.sleep(1000)
     myTeam.toString()
     println()
-
-//    val teamHP = myTeam.calculateTeamHP()
-    println(myTeam.currentTeamHP)
-    /*println("Now must the current healt points show..")
-    println(myTeam.currentTeamHP)
-    println(myTeam.myTeamHP)*/
-
-
-    //val teamPower = myTeam.calculateTeamPower()
-  println(myTeam.myTeamPower)
+    println("***************************************")
+    println("My team current Healt Points are: ${myTeam.currentTeamHP}")
+    println("My team damage power is ${myTeam.myTeamPower}")
+    println("***************************************")
     println()
     //val teamExtras = PlayerTeam().chooseExtraItems()
-    println("***************************************")
-   // myTeam.showExtraItems(teamExtras)
-    println("***************************************")
+    // myTeam.showExtraItems(teamExtras)
     println()
 
     println("""///////////////////////////////////////""")
@@ -84,32 +76,33 @@ fun start() {
     val enemy = Enemy()
     enemy.toString()
 //    println(enemyLogo)
+
+    while (myTeam.currentTeamHP > 0 && enemy.currentHealtPoints > 0) {
         oneRoundFight(myTeam, enemy)
-        myTeam.removeHero()
-        myTeam.checkForWinner(enemy)
+        myTeam.checkForWinner(myTeam, enemy)
+
+    }
+
 
 }
 
 fun oneRoundFight(team: PlayerTeam, enemy: Enemy) {
-    println("muss etwas zeigen....")
-    println(team.currentTeamHP)
-    println(enemy.currentHealtPoints)
-    while (team.currentTeamHP > 0 && enemy.currentHealtPoints > 0) {
+//    while (team.currentTeamHP > 0 && enemy.currentHealtPoints > 0) {
 
-        try {
             team.teamAttack(enemy)
-            enemy.takeDamage(team.myTeamPower)
-            if (enemy.currentHealtPoints > 0) {
-                enemy.attack(team)
-            } else {
+            if (enemy.currentHealtPoints <= 0) {
                 println("Your enemy is defeated.")
+//                break
+            } else {
+                enemy.enemyAttack(team)
+                if (team.currentTeamHP > 0)
+                    team.removeHero()
             }
-        } catch (e: Error) {
-            println(e.message)
-        }
-       // team.usePotion(enemy)
-        //enemy.attack(team)
-    }
+        // team.usePotion(enemy)
+        enemy.attack(team)
+        team.removeHero()
+
+//    }
 
 
 }

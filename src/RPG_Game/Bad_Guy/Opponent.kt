@@ -5,7 +5,8 @@ import RPG_Game.PlayerTeam
 import kotlin.random.Random
 
 open class Opponent(
-    var enemyName: String) {
+    var enemyName: String
+) {
     var healthPoints: Int = 0
     var currentHealtPoints = healthPoints
     var level: Int = Random.nextInt(1, 5)
@@ -30,23 +31,24 @@ open class Opponent(
         //  team.myTeamPower = 0
     }
 
-fun enemyAttack(team: PlayerTeam) {
-        println("This hero, ${this.enemyName} with $damagePower points, will now attack....")
-        var damageAmount: Int = this.damagePower
-//        val heroIterator = team.iterator()
+    open fun enemyAttack(team: PlayerTeam) {
+        println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now attack....")
+        team.currentTeamHP -= this.damagePower
 
 
     }
-    fun takeDamage(damageAmount: Int){
+
+    fun takeDamage(damageAmount: Int) {
         this.currentHealtPoints -= damageAmount
 
         println("${this.enemyName} has suffered $damageAmount damage.")
         println("Remaining HP: $currentHealtPoints/$healthPoints")
 
-        if (currentHealtPoints <= 0){
+        if (currentHealtPoints <= 0) {
             println("${this.enemyName} has suffered a killing blow :(")
         }
     }
+
     override fun toString(): String {
         println("..........................")
         println(
