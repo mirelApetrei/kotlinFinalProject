@@ -27,7 +27,7 @@ class Team() {
 
     private var heroesList: MutableList<Hero>? = mutableListOf()
     var myTeamHP: Int
-    var currentTeamHP: Int = 0
+    var currentTeamHP: Int
     var myTeamPower: Int
 
     private var paladin = Paladin()
@@ -49,12 +49,12 @@ class Team() {
         myTeam = choseTeamFromInput()
         this.myTeamHP = calculateTeamHP()
         this.myTeamPower = calculateTeamPower()
-
+        this.currentTeamHP = myTeamHP
         println()
         println("__________________________")
         println("Your TEAM MEMBERS are: ")
         for (hero in myTeam) {
-            hero.currentHealthPoints = hero.healthPoints
+
             hero.toString()
         }
 
@@ -169,12 +169,11 @@ class Team() {
     fun teamTakeDamage(enemy: Opponent) {
 
         var damageAmount = enemy.damagePower
-
         for (hero in myTeam) {
             val heroDamage = damageAmount / myTeam.size
             hero.takeDamage(heroDamage)
         }
-        currentTeamHP -= enemy.damagePower
+//        currentTeamHP -= enemy.damagePower
         for (player in myTeam) {
             if (player.currentHealthPoints <= 0) {
                 player.currentHealthPoints = 0
@@ -182,7 +181,7 @@ class Team() {
             if (enemy.damagePower != 0) {
                 currentTeamHP += player.currentHealthPoints
             } else {
-                currentTeamHP = this.myTeamHP
+               return
             }
         }
         println("The current HP of the team is $currentTeamHP")

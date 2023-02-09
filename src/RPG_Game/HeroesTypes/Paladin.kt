@@ -38,6 +38,8 @@ class Paladin(heroName: String = "Paladin"
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
+        println(".........-------------.........")
+
     }
 
 }

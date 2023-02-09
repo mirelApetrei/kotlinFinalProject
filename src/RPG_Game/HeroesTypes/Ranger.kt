@@ -38,6 +38,7 @@ class Ranger(heroName: String = "Ranger"
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
+        println(".........-------------.........")
     }
 
 }

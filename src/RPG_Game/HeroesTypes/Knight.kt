@@ -39,8 +39,10 @@ class Knight(heroName: String = "Knight"
             println("The enemy suffered damage of ${this.damagePower}")
             opponent.takeDamage(damageAmount)
         }
-       this.currentHealthPoints += 120
+       this.currentHealthPoints += 100
+       team.currentTeamHP =+ 100
        println("Your $heroName current health points will be now increase by 120 points.")
        println(this.currentHealthPoints)
+       println(".........-------------.........")
     }
 }

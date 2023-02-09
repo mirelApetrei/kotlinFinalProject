@@ -37,6 +37,7 @@ open class Opponent(
 
     private fun healing() {
         Thread.sleep(500)
+        println("!!!!!!Healing action.!!!!!!!")
         println("The enemy HEALTH POINTS will increase with 150 points...")
         this.healthPoints = this.healthPoints.plus(150)
     }

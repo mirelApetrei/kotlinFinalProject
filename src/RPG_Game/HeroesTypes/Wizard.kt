@@ -48,6 +48,7 @@ class Wizard(
             this.level++
             println("The level from ${this.heroName} will rise with 1")
             this.currentHealthPoints += 30
+            team.currentTeamHP += 30
             this.damagePower += 30
             println(
                 "Now the $heroName has $currentHealthPoints HP \n" +
@@ -55,8 +56,10 @@ class Wizard(
             )
         } else {
             this.currentHealthPoints += 50
+            team.currentTeamHP += 50
         }
 //        this.toString()
+        println(".........-------------.........")
     }
 
 }

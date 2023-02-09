@@ -45,7 +45,8 @@ open class Hero(var heroName: String) {
         println("Remaining HP: ${this.currentHealthPoints}/$healthPoints")
 
         if (currentHealthPoints <= 0) {
-            println("${this.heroName} has suffered a killing blow :(")
+            println("${this.heroName} has suffered a killing blow :( ")
+            println(".........-------------.........")
         }
     }
 
