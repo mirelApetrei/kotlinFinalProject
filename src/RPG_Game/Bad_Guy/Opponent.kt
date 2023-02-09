@@ -24,13 +24,13 @@ open class Opponent(
     }
 
 
-    fun healing() {
+    private fun healing() {
         Thread.sleep(500)
         println("The enemy HEALTH POINTS will increase with 150 points...")
         this.healthPoints = this.healthPoints.plus(150)
     }
 
-    fun levelUp() {
+    private fun levelUp() {
         Thread.sleep(500)
         println("The $enemyName will level up now..")
         this.level++
@@ -44,7 +44,7 @@ open class Opponent(
         println("------------------------------")
     }
 
-    fun enemyHit(team: Team) {
+    private fun enemyHit(team: Team) {
         Thread.sleep(500)
         println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now HIT....")
         team.currentTeamHP -= this.damagePower

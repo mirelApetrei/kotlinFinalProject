@@ -11,9 +11,7 @@ class Enemy(enemyName: String = "Dragon"): Opponent(enemyName) {
             in (1..2) -> {
                 this.damagePower = (300..350).random()
                 this.healthPoints = (300..450).random()
-
             }
-
             in (2..3) -> {
                 this.damagePower = (350..450).random()
                 this.healthPoints = (450..600).random()
