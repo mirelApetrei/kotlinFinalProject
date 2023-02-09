@@ -1,7 +1,7 @@
 package RPG_Game.HeroesTypes
 
 import RPG_Game.Bad_Guy.Opponent
-import RPG_Game.PlayerTeam
+import RPG_Game.Team
 import kotlin.random.Random
 
 class Healer(
@@ -34,10 +34,14 @@ class Healer(
         }
     }
 
-      override fun heal() {
-          super.heal()
-         this.healthPoints += this.damagePower
-          println("$heroName has now ${this.healthPoints} HEALTH POINTS.")
+
+    override fun heroAttack(team: Team, opponent: Opponent) {
+        println("Your Team current Health Points will now increase with ${this.damagePower} ")
+        team.currentTeamHP += this.damagePower
+    }
+      override fun heal(team: Team) {
+          println("Your Team current Health Points will now increase with ${this.damagePower} ")
+         team.currentTeamHP += this.damagePower
     }
 
 

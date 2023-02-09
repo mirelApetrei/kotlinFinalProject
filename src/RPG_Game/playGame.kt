@@ -1,115 +1,96 @@
 package RPG_Game
 
 import RPG_Game.Bad_Guy.Enemy
-import RPG_Game.Extras.ExtraItem
-import RPG_Game.HeroesTypes.Hero
 
 
-var myLogo = """
-                |\                |\                |\                |\
-   || .---.          || .---.          || .---.          || .---.
-   ||/_____\         ||/_____\         ||/_____\         ||/_____\
-   ||( '.' )         ||( '.' )         ||( '.' )         ||( '.' )
-   || \_-_/_         || \_-_/_         || \_-_/_         || \_-_/_
-   :-"`'V'//-.       :-"`'V'//-.       :-"`'V'//-.       :-"`'V'//-.
-  / ,   |// , `\    / ,   |// , `\    / ,   |// , `\    / ,   |// , `\
- / /|Ll //Ll|| |   / /|Ll //Ll|| |   / /|Ll //Ll|| |   / /|Ll //Ll|| |
-/_/||__//   || |  /_/||__//   || |  /_/||__//   || |  /_/||__//   || |
-\ \/---|[]==|| |  \ \/---|[]==|| |  \ \/---|[]==|| |  \ \/---|[]==|| |
- \/\__/ |   \| |   \/\__/ |   \| |   \/\__/ |   \| |   \/\__/ |   \| |
- /\|_   | Ll_\ |   /|/_   | Ll_\ |   /|/_   | Ll_\ |   /|/_   | Ll_\ |
-`^""${'"'}^`||_|  `^""${'"'}^`||_|   `^""${'"'}^`||_|  `^""${'"'}^`||_|
-    |   |   ||/       |   |   ||/       |   |   ||/       |   |   ||/
-    |   |   |         |   |   |         |   |   |         |   |   |
-    |   |   |         |   |   |         |   |   |         |   |   |
-    |   |   |         |   |   |         |   |   |         |   |   |
-    L___l___J         L___l___J         L___l___J         L___l___J
-     |_ | _|           |_ | _|           |_ | _|           |_ | _|
-    (___|___)         (___|___)         (___|___)         (___|___)
-     ^^^ ^^^           ^^^ ^^^           ^^^ ^^^           ^^^ ^^^
-    """.trimIndent()
 var enemyLogo = """
-                         ___====-_  _-====___
-           _--^^^#####//      \\#####^^^--_
-        _-^##########// (    ) \\##########^-_
-       -############//  |\^^/|  \\############-
-     _/############//   (@::@)   \\############\_
-    /#############((     \\//     ))#############\
-   -###############\\    (oo)    //###############-
-  -#################\\  / VV \  //#################-
- -###################\\/      \//###################-
-_#/|##########/\######(   /\   )######/\##########|\#_
-|/ |#/\#/\#/\/  \#/\##\  |  |  /##/\#/  \/\#/\#/\#| \|
-`  |/  V  V  `   V  \#\| |  | |/#/  V   '  V  V  \|  '
-   `   `  `      `   / | |  | | \   '      '  '   '
-                    (  | |  | |  )
-                   __\ | |  | | /__
-                  (vvv(VVV)(VVV)vvv)
-    
+                            ==(W{==========-      /===-                        
+                              ||  (.--.)         /===-_---~~~~~~~~~------____  
+                              | \_,|**|,__      |===-~___                _,-' `
+                 -==\\        `\ ' `--'   ),    `//~\\   ~~~~`---.___.-~~      
+             ______-==|        /`\_. .__/\ \    | |  \\           _-~`         
+       __--~~~  ,-/-==\\      (   | .  |~~~~|   | |   `\        ,'             
+    _-~       /'    |  \\     )__/==0==-\<>/   / /      \      /               
+  .'        /       |   \\      /~\___/~~\/  /' /        \   /'                
+ /  ____  /         |    \`\.__/-~~   \  |_/'  /          \/'                  
+/-'~    ~~~~~---__  |     ~-/~         ( )   /'        _--~`                   
+                  \_|      /        _) | ;  ),   __--~~                        
+                    '~~--_/      _-~/- |/ \   '-~ \                            
+                   {\__--_/}    / \\_>-|)<__\      \                           
+                   /'   (_/  _-~  | |__>--<__|      |                          
+                  |   _/) )-~     | |__>--<__|      |                          
+                  / /~ ,_/       / /__>---<__/      |                          
+                 o-o _//        /-~_>---<__-~      /                           
+                 (^(~          /~_>---<__-      _-~                            
+                ,/|           /__>--<__/     _-~                               
+             ,//('(          |__>--<__|     /                  .----_          
+            ( ( '))          |__>--<__|    |                 /' _---_~\        
+         `-)) )) (           |__>--<__|    |               /'  /     ~\`\      
+        ,/,'//( (             \__>--<__\    \            /'  //        ||      
+      ,( ( ((, ))              ~-__>--<_~-_  ~--____---~' _/'/        /'       
+    `~/  )` ) ,/|                 ~-_~>--<_/-__       __-~ _/                  
+  ._-~//( )/ )) `                    ~~-'_/_/ /~~~~~~~__--~                    
+   ;'( ')/ ,)(                              ~~~~~~~~~~                         
+  ' ') '( (/                                                                   
+    '   '  `
     """.trimIndent()
 
 
-fun start() {
-    println("The Game will begin...")
-    Thread.sleep(1500)
-    val myTeam = PlayerTeam()
+fun playGame() {
+    var team = Team()
+    Thread.sleep(500)
     println()
-    println(" This is your random chosen team:... ")
-//    println(myLogo)
-    Thread.sleep(1000)
-    myTeam.toString()
-    println()
-    println("***************************************")
-    println("My team current Healt Points are: ${myTeam.currentTeamHP}")
-    println("My team damage power is ${myTeam.myTeamPower}")
+    Thread.sleep(500)
     println("***************************************")
     println()
-    //val teamExtras = PlayerTeam().chooseExtraItems()
-    // myTeam.showExtraItems(teamExtras)
+    println("Your team current Health Points are: ${team.currentTeamHP}")
+    println("Your team damage power is ${team.myTeamPower}")
+    println()
+    println("***************************************")
+    println()
     println()
 
     println("""///////////////////////////////////////""")
     println("***************************************")
     println("""\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\""")
     println("Now it will be chosen your enemy....")
-    Thread.sleep(1000)
+    println()
+    Thread.sleep(800)
     val enemy = Enemy()
+    println(enemyLogo)
     enemy.toString()
-//    println(enemyLogo)
 
-    while (myTeam.currentTeamHP > 0 && enemy.currentHealtPoints > 0) {
-        oneRoundFight(myTeam, enemy)
-        myTeam.checkForWinner(myTeam, enemy)
+    while (team.currentTeamHP > 0 && enemy.currentHealthPoints > 0) {
+        println("THE FIGHT BEGINS......")
+        Thread.sleep(2000)
+        oneRoundFight(team, enemy)
 
+        Thread.sleep(500)
     }
-
-
 }
 
-fun oneRoundFight(team: PlayerTeam, enemy: Enemy) {
-//    while (team.currentTeamHP > 0 && enemy.currentHealtPoints > 0) {
+fun oneRoundFight(team: Team, enemy: Enemy) {
 
-            team.teamAttack(enemy)
-            if (enemy.currentHealtPoints <= 0) {
-                println("Your enemy is defeated.")
-//                break
-            } else {
-                enemy.enemyAttack(team)
-                if (team.currentTeamHP > 0)
-                    team.removeHero()
-            }
-        // team.usePotion(enemy)
+    team.teamAttack(team, enemy)
+    if (enemy.currentHealthPoints <= 0) {
+        println("Your enemy is defeated.")
+
+    } else {
+        enemy.attack(team)
+        if (team.currentTeamHP > 0)
+            team.removeHero()
+    }
+    println("///////////////////////////////")
+    println("|||||||||||||||||||||||||||||||")
+    println("""\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\""")
+    if (enemy.currentHealthPoints <= 0) {
+        team.checkForWinner(team, enemy)
+    } else {
         enemy.attack(team)
         team.removeHero()
-
-//    }
-
-
+    }
+    Thread.sleep(1000)
 }
 
 
-fun playGame(myTeam: PlayerTeam, enemy: Enemy) {
-
-
-}
 

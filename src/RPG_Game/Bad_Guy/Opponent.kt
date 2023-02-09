@@ -1,51 +1,66 @@
 package RPG_Game.Bad_Guy
 
 import RPG_Game.Extras.ExtraItem
-import RPG_Game.PlayerTeam
+import RPG_Game.Team
 import kotlin.random.Random
 
 open class Opponent(
     var enemyName: String
 ) {
     var healthPoints: Int = 0
-    var currentHealtPoints = healthPoints
+    var currentHealthPoints = healthPoints
     var level: Int = Random.nextInt(1, 5)
     var damagePower: Int = 0
 
     var equippedWeapon: ExtraItem? = null
 
 
-    open fun attack(team: PlayerTeam) {
-        println("This enemy has attacked:...")
-        //team.myTeamHP = team.myTeamHP.minus(this.damagePower)
-        println()
+    open fun attack(team: Team) {
+
+        var randomChoises = listOf<Int>(1, 2, 3).random()
+        println("The enemy`s attack choise is the following ... ")
+        when(randomChoises){
+            1 -> levelUp()
+            2 -> enemyHit(team)
+            3 -> healing()
+        }
     }
 
-    open fun summon() {
-        Thread.sleep(1000)
-        println("The enemy will now get some help...")
+
+    open fun healing() {
+        Thread.sleep(500)
+        println("The enemy HEALTH POINTS will increase with 150 points...")
         this.healthPoints = this.healthPoints.plus(150)
     }
 
-    open fun defense(team: PlayerTeam) {
-        println("A defense move has been taken.")
-        //  team.myTeamPower = 0
+    open fun levelUp() {
+        Thread.sleep(500)
+        println("The $enemyName will level up now..")
+        this.level++
+        currentHealthPoints = this.healthPoints
+        println(
+            "${this.enemyName}\n" +
+                    "${this.enemyName} HP are ${this.healthPoints}\n" +
+                    "${this.enemyName} Damage Power is: ${this.damagePower}"
+        )
+        println("------------------------------")
     }
 
-    open fun enemyAttack(team: PlayerTeam) {
-        println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now attack....")
+    open fun enemyHit(team: Team) {
+        Thread.sleep(500)
+        println("The ${this.enemyName} with $damagePower DAMAGE POWER, will now HIT....")
         team.currentTeamHP -= this.damagePower
 
 
     }
 
     fun takeDamage(damageAmount: Int) {
-        this.currentHealtPoints -= damageAmount
+        this.currentHealthPoints -= damageAmount
 
         println("${this.enemyName} has suffered $damageAmount damage.")
-        println("Remaining HP: $currentHealtPoints/$healthPoints")
+        println("Remaining HP: $currentHealthPoints/$healthPoints")
 
-        if (currentHealtPoints <= 0) {
+        if (currentHealthPoints <= 0) {
             println("${this.enemyName} has suffered a killing blow :(")
         }
     }

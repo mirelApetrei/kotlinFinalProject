@@ -1,6 +1,5 @@
 package RPG_Game.Bad_Guy
 
-import RPG_Game.PlayerTeam
 import kotlin.random.Random
 
 class EnemyHelper(heroName: String = "Orc" ): Opponent(heroName){
@@ -26,19 +25,11 @@ class EnemyHelper(heroName: String = "Orc" ): Opponent(heroName){
                 this.healthPoints = (400..500).random()
 
             }
-//
-//            in (4..5) -> {
-//                this.damagePower = (600..800).random()
-//                this.healthPoints = (500..900).random()
-//            }
 
         }
-        this.currentHealtPoints = this.healthPoints
+        this.currentHealthPoints = this.healthPoints
 
     }
 
-    override fun enemyAttack(team: PlayerTeam){
-        team.currentTeamHP -= this.damagePower
-        team.teamTakeDamage(this.damagePower)
-    }
+
 }

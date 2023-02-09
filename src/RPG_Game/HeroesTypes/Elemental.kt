@@ -4,6 +4,7 @@ import RPG_Game.Bad_Guy.Opponent
 import kotlin.random.Random
 import RPG_Game.Extras.ExtraItem
 import RPG_Game.Extras.Paralyze
+import RPG_Game.Team
 
 class Elemental(
     heroName: String = "Elemental"
@@ -38,10 +39,10 @@ class Elemental(
     }
 
 
-    override fun heroAttack(enemy: Opponent) {
+    override fun heroAttack(team: Team, enemy: Opponent) {
         println("This hero, ${this.heroName} with $damagePower points, will now attack....")
         val damageAmount: Int = this.damagePower
-        if (enemy.currentHealtPoints > 0) {
+        if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
         }
     }
