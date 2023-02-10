@@ -158,8 +158,11 @@ class Team() {
         for (member in myTeam) {
             if (enemy.currentHealthPoints > 0) {
                 member.heroAttack(team, enemy)
+                println("-----------------------------")
+                Thread.sleep(800)
             }
             checkForWinner(team, enemy)
+            Thread.sleep(800)
         }
     }
 
@@ -169,12 +172,14 @@ class Team() {
         for (hero in myTeam) {
             var heroDamage = damageAmount/myTeam.size
             hero.takeDamage(heroDamage)
+            Thread.sleep(800)
         }
         for (player in myTeam) {
             if (player.currentHealthPoints <= 0){
                 player.currentHealthPoints = 0
             }
             currentTeamHP += player.currentHealthPoints
+            Thread.sleep(800)
         }
         println("The current HP of the team is $currentTeamHP")
     }

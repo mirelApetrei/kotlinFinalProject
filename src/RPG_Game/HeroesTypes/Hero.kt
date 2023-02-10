@@ -25,17 +25,18 @@ open class Hero(var heroName: String) {
     }
 
 
-    open fun heal(team: Team) {
-        println("An healing action has benn taken..")
-//        this.healthPoints = this.healthPoints?.plus(50)!!
-    }
+//    open fun heal(team: Team) {
+//        println("An healing action has benn taken..")
+////        this.healthPoints = this.healthPoints?.plus(50)!!
+//    }
 
-    open fun defense(badGuy: Opponent) {
-        println("A defense move has been taken.")
-        // badGuy.damagePower = 0
-    }
+//    open fun defense(badGuy: Opponent) {
+//        println("A defense move has been taken.")
+//        // badGuy.damagePower = 0
+//    }
 
-    open fun boost(team: Team, badGuy: Opponent) { }
+    //isn`t done yet
+//    open fun boost(team: Team, badGuy: Opponent) { }
 
     open fun heroAttack(team: Team, opponent: Opponent) {}
     open fun takeDamage(damageAmount: Int) {
