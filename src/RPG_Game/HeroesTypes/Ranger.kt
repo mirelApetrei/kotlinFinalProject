@@ -37,6 +37,7 @@ class Ranger(heroName: String = "Ranger"
         val damageAmount: Int = this.damagePower
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
+            Thread.sleep(1000)
         }
     }
 

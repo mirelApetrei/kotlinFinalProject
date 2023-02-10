@@ -40,6 +40,7 @@ class Wizard(
         val damageAmount: Int = this.damagePower
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
+            Thread.sleep(1000)
         }
         if (this.level < 5){
         level++

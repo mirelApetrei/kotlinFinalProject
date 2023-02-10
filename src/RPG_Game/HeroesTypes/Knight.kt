@@ -38,9 +38,11 @@ class Knight(heroName: String = "Knight"
         if (opponent.currentHealthPoints > 0) {
             println("The enemy suffered damage of ${this.damagePower}")
             opponent.takeDamage(damageAmount)
+            Thread.sleep(1000)
         }
        this.currentHealthPoints += 100
        team.currentTeamHP += 100
+//       work in progress...
       // println("The $heroName HP = ${this.currentHealthPoints}")
        println("TEAM HP = ${team.currentTeamHP}")
 

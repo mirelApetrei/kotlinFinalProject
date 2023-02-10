@@ -4,7 +4,8 @@ import RPG_Game.Bad_Guy.Opponent
 import RPG_Game.HeroesTypes.*
 
 //*
-// TODO: with the help of this Class, we are building our team randomly, and also our teamPotionsList wich we will use in combat
+// TODO: with the help of this Class, we are building our team wich we will use in combat
+       // The team power is random chosen
 // */
 
 
@@ -159,10 +160,10 @@ class Team() {
             if (enemy.currentHealthPoints > 0) {
                 member.heroAttack(team, enemy)
                 println("-----------------------------")
-                Thread.sleep(800)
+                Thread.sleep(1000)
             }
             checkForWinner(team, enemy)
-            Thread.sleep(800)
+            Thread.sleep(1000)
         }
     }
 
@@ -172,7 +173,7 @@ class Team() {
         for (hero in myTeam) {
             var heroDamage = damageAmount/myTeam.size
             hero.takeDamage(heroDamage)
-            Thread.sleep(800)
+            Thread.sleep(1000)
         }
         for (player in myTeam) {
             if (player.currentHealthPoints <= 0){

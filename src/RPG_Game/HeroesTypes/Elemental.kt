@@ -44,6 +44,7 @@ class Elemental(
         val damageAmount: Int = this.damagePower
         if (enemy.currentHealthPoints > 0) {
             enemy.takeDamage(damageAmount)
+            Thread.sleep(1000)
         }
         this.currentHealthPoints += 100
         team.currentTeamHP += 100

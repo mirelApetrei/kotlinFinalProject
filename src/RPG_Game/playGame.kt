@@ -37,8 +37,8 @@ var enemyLogo = """
 
 
 fun playGame() {
-    var team = Team()
-    Thread.sleep(800)
+    val team = Team()
+    Thread.sleep(1500)
     println()
 
     println("***************************************")
@@ -46,7 +46,7 @@ fun playGame() {
     println("Your team current Health Points are: ${team.currentTeamHP}")
     println("Your team damage power is ${team.myTeamPower}")
     println()
-    Thread.sleep(800)
+    Thread.sleep(1500)
     println("***************************************")
     println()
     println()
@@ -57,11 +57,11 @@ fun playGame() {
 
     println("Now it will be chosen your enemy....")
     println()
-    Thread.sleep(800)
+    Thread.sleep(1000)
     val enemy = Enemy()
     println(enemyLogo)
     enemy.toString()
-    Thread.sleep(800)
+    Thread.sleep(1000)
 
 
     while (team.currentTeamHP > 0 && enemy.currentHealthPoints > 0) {
@@ -81,12 +81,10 @@ fun oneRoundFight(team: Team, enemy: Enemy) {
     } else {
         enemy.attack(team)
         Thread.sleep(600)
-//        team.teamTakeDamage(enemy)
     }
     println("*******************************")
     println("|||||||||||||||||||||||||||||||")
     println("*******************************")
-
     Thread.sleep(500)
 }
 
