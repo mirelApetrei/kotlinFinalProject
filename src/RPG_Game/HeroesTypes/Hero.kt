@@ -1,7 +1,7 @@
 package RPG_Game.HeroesTypes
 
 import RPG_Game.Bad_Guy.Opponent
-import RPG_Game.Extras.ExtraItem
+//import RPG_Game.Extras.ExtraItem
 import RPG_Game.Team
 import kotlin.random.Random
 
@@ -39,12 +39,13 @@ open class Hero(var heroName: String) {
 //    open fun boost(team: Team, badGuy: Opponent) { }
 
     open fun heroAttack(team: Team, opponent: Opponent) {}
+
     open fun takeDamage(damageAmount: Int) {
         this.currentHealthPoints = this.healthPoints - damageAmount
 
         println("${this.heroName} has suffered $damageAmount damage.")
         println("Remaining HP: ${this.currentHealthPoints}/$healthPoints")
-
+        Thread.sleep(800)
         if (currentHealthPoints <= 0) {
             println("${this.heroName} has suffered a killing blow :(")
         }

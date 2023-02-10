@@ -36,6 +36,10 @@ var enemyLogo = """
     """.trimIndent()
 
 
+fun main(args: Array<String>) {
+    playGame()
+}
+
 fun playGame() {
     val team = Team()
     Thread.sleep(1500)

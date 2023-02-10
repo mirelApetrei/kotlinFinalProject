@@ -69,7 +69,7 @@ open class Opponent(
     }
 
     override fun toString(): String {
-        println("..........................")
+        println("------------------------------")
         println(
             "${this.enemyName}\n" +
                     "${this.enemyName} level is $level \n" +
