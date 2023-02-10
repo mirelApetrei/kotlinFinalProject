@@ -1,0 +1,47 @@
+classDiagram
+direction BT
+class Elemental {
+  + Elemental(String) 
+  + Elemental() 
+  + heroAttack(Team, Opponent) Unit
+}
+class Hero {
+  + Hero(String) 
+  + boost(Team, Opponent) Unit
+  + heroAttack(Team, Opponent) Unit
+  + heal(Team) Unit
+  + toString() String
+  + defense(Opponent) Unit
+  + takeDamage(Int) Unit
+   Int healthPoints
+   Int level
+   String heroName
+   Int currentHealthPoints
+   Int damagePower
+}
+class Knight {
+  + Knight() 
+  + Knight(String) 
+  + heroAttack(Team, Opponent) Unit
+}
+class Paladin {
+  + Paladin() 
+  + Paladin(String) 
+  + heroAttack(Team, Opponent) Unit
+}
+class Ranger {
+  + Ranger(String) 
+  + Ranger() 
+  + heroAttack(Team, Opponent) Unit
+}
+class Wizard {
+  + Wizard(String) 
+  + Wizard() 
+  + heroAttack(Team, Opponent) Unit
+}
+
+Elemental  -->  Hero 
+Knight  -->  Hero 
+Paladin  -->  Hero 
+Ranger  -->  Hero 
+Wizard  -->  Hero 

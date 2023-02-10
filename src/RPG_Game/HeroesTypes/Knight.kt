@@ -41,7 +41,7 @@ class Knight(heroName: String = "Knight"
         }
        this.currentHealthPoints += 100
        team.currentTeamHP += 100
-       println("The $heroName HP = ${this.currentHealthPoints}")
+      // println("The $heroName HP = ${this.currentHealthPoints}")
        println("TEAM HP = ${team.currentTeamHP}")
 
     }

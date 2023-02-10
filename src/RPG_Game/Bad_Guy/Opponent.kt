@@ -40,7 +40,7 @@ open class Opponent(
         Thread.sleep(500)
         println("The $enemyName will level up now..")
         this.level++
-        currentHealthPoints += 170
+        this.currentHealthPoints += 170
         damagePower += 150
         println(
             "${this.enemyName}\n" +
